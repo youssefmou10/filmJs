@@ -41,6 +41,9 @@ div#selction>div{
 	height: 352px;
 	position: relative;
 }
+div#selction>h3{
+	margin: 3px;
+}
 
 div#selction>div span:first-child
 {
@@ -48,6 +51,17 @@ div#selction>div span:first-child
 	color: rgb(80,80,80);
 	position: relative;
 	top: 100px;
+}
+div#selction>div span:nth-child(2){
+	font-size: 20px;
+	color:rgb(80,80,80);
+	position: absolute;
+	top: -3px;
+	right: -3px;
+	background-color: white;
+	padding: 0px 5px;
+	border-radius: 10px;
+	box-shadow: 0px 0px 4px 2px rgba(80,80,80,0.8)
 }
 div#selction,div#films,div#details{
 	background-color: rgb(220,220,220);
@@ -84,6 +98,7 @@ div.film h3{
 	background-color: rgb(80,80,80);
 	margin: 0px;
 	color: white;
+	white-space: initial;
 }
 div#details{
 	min-height: 60px;
