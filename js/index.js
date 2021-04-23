@@ -46,11 +46,56 @@ window.onload=function()
 		//recpurer la syntax film qui ont dans html
 		document.getElementById("films").appendChild(film);
 
+}
+	//partie filtrage 
+	//getElementBytagName pour recuprer tous les elements qui ont dans le tableau
+	var input = document.getElementsByTagName("input");
+	//premier Element faire un evenement
+	input[0].addEventListener("keyup",recherche);
+	input[1].addEventListener("mouseup",checkbox);
 
+	function recherche(event)
+	{	//recuprer la valeur qui a dans input
+		var inputValue=event.target.value;
+		inputValue=inputValue.toLowerCase();
+		console.log(inputValue);
+		//check input 
+		
+		
+			//input  n'est pas vide 
+			//la boucle pour récuprer title de filmData
+			for(var i=0;i<filmData.length;i++)
+			{
+					var titre=filmData[i].title;
+					//convertir to lowercase
+					titre=titre.toLowerCase();
+					var film=document.getElementById(i+"-film");
+					//pour filtrer le nom ou bien une letter est dans le text
+					if(titre.includes(inputValue)==false)
+					{
+						//ne pas afficher
+						film.style.display="none";
+					}
+					else
+					{
+						//afficher
+						film.style.display="inline-block"
+					}
+			
+		}
+	}//fin de la fonction recherche
 
-
-
-
+	function checkbox(event)
+	{
+		var details=document.getElementById("details");
+		console.log(event.target.checked);
+		if(event.target.checked)
+		{
+			details.style.display="none";
+		}
+		else{
+			details.style.display="block";
+		}
 	}
 
 }
