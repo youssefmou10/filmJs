@@ -50,9 +50,13 @@ window.onload=function()
 	//partie filtrage 
 	//getElementBytagName pour recuprer tous les elements qui ont dans le tableau
 	var input = document.getElementsByTagName("input");
+	//pour récuprer la list des films 
+	var films = document.getElementById("films");
 	//premier Element faire un evenement
 	input[0].addEventListener("keyup",recherche);
 	input[1].addEventListener("mouseup",checkbox);
+	films.addEventListener("mouseover",survolfilm);
+	films.addEventListener("mouseout",surfinfilm);
 
 	function recherche(event)
 	{	//recuprer la valeur qui a dans input
@@ -96,6 +100,40 @@ window.onload=function()
 		else{
 			details.style.display="block";
 		}
-	}
+	}//fin de la function checkbox 
 
+	function survolfilm(event)
+	{
+		//pour recuprer le tag parent
+		var survole =event.target.parentNode;
+		//pour recuprer id des parents
+		var survoleid=survole.id;
+		//variable pour les position du film
+		var position
+		
+		if(survoleid=="catalog")
+		{
+			return;
+		}
+		else if(survoleid.length==6)
+		{
+			position=survoleid[0];
+		}
+		else if(survoleid.length==7)
+		{
+			position=survoleid[0]+survoleid[1];
+		}
+		else
+		{
+			return;
+		}
+		//declartion pour recuprer la description 
+			var descprtionfilms=filmData[position].text;
+			document.getElementById("details").innerHTML=descprtionfilms
+	}
+	//creation pour vider le quand en la lache le cursor
+	
+	function surfinfilm(){
+		document.getElementById("details").innerHTML="";
+	}
 }
