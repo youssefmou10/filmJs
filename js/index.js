@@ -57,6 +57,7 @@ window.onload=function()
 	input[1].addEventListener("mouseup",checkbox);
 	films.addEventListener("mouseover",survolfilm);
 	films.addEventListener("mouseout",surfinfilm);
+	films.addEventListener("click",selctionFilm);
 
 	function recherche(event)
 	{	//recuprer la valeur qui a dans input
@@ -135,5 +136,31 @@ window.onload=function()
 	
 	function surfinfilm(){
 		document.getElementById("details").innerHTML="";
+	}
+	//fin de fonction 
+	//debut de fonction selcion du film sur menu top 2
+	function selctionFilm(event){
+		var film=event.target.parentNode;
+		var selct1=document.getElementById("selction1");
+		var selct2=document.getElementById("selction2");
+		console.log(event.target.parentNode);
+		//crerer de varaiable pour span fils 
+		var selctChild1=selct1.childNodes;
+		var selctChild2=selct2.childNodes;
+		//console.log(selctChild1);
+		if(selctChild1.length==1)
+		{
+		//partie selction 1 est vide
+		selct1.insertBefore(film,selctChild1[0]);
+
+		}
+		else if(selctChild2.length==1)
+		{
+			//partie selection 2 est vide 
+			selct2.insertBefore(film,selctChild2[0]);
+		}
+		else{
+			alert("vous avez déja choisi deux films!");
+		}
 	}
 }
